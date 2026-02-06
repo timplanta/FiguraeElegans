@@ -23,9 +23,13 @@ for i = 1:length(axesHandles)
     set(axesHandles(i), 'FontSize', fs, 'LineWidth', plw, 'Box', 'on');
     plots = get(axesHandles(i),'Children');
     for j = 1 : length(plots)
-        set(plots(j), 'LineWidth', lw);
+        current_plot = plots(j)
+        if isgraphics(current_plot,'line')
+            set(plots(j), 'LineWidth', lw);
+        end
     end
 end
+
 
 if length(axesHandles) > 1
     tiles = get(gcf);
